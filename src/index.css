@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&family=Roboto+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { @apply bg-white font-sans antialiased; color: #3c3a3a; font-size: 16px; }
+  section, main, .section-wrap, header, footer { border-radius: 0 !important; }
+  .section-card { border-radius: 12px !important; }
+  h1, h2, h3, h4, h5, h6 {
+    color: #111111;
+    font-family: 'Tomato Grotesk', 'Onest', ui-sans-serif, system-ui, sans-serif;
+  }
+  ::selection { @apply bg-lime text-white; }
+}
+
+@layer components {
+  .eyebrow { @apply text-xs font-bold uppercase text-[#305aa1]; }
+  .section-wrap { @apply mx-auto max-w-[84rem] px-6 lg:px-8; }
+  .button-primary { @apply inline-flex items-center justify-center rounded-full bg-lime px-6 py-3.5 text-sm font-extrabold text-white; }
+  .button-secondary { @apply inline-flex items-center justify-center rounded-full border border-white/30 px-6 py-3.5 text-sm font-extrabold text-white; }
+  .body-copy { color: #3c3a3a; }
+  .display-font { font-family: 'Tomato Grotesk', 'Onest', ui-sans-serif, system-ui, sans-serif; }
+}
+
+@keyframes technology-marquee {
+  to { transform: translateX(-50%); }
+}
+
+@keyframes technology-marquee-reverse {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+.tech-marquee { animation: technology-marquee 70s linear infinite; }
+.tech-marquee-reverse { animation: technology-marquee-reverse 85s linear infinite; }
+
+.tech-marquee-fade {
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 7%, black 93%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 7%, black 93%, transparent 100%);
+}
+
+@keyframes portfolio-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.portfolio-marquee { animation: portfolio-marquee 45s linear infinite; }
+.portfolio-marquee:hover { animation-play-state: paused; }
+
+.blog-art { color: white; }
+.portfolio-art { background-color: #16223E; }
+
+#insights article > div:nth-child(2) .text-sky,
+#insights article > div:nth-child(2) .text-lime { color: rgba(17, 17, 17, .6); }
+#insights article > h3 a,
+#insights article > a:last-child { color: #16223E; }
+
+.typewriter-text { display: inline-block; white-space: nowrap; }
+.typewriter-hero { min-width: min(100%, 25ch); }
+.typewriter-cursor { margin-left: .04em; opacity: .8; }
+
+@keyframes process-ripple {
+  0% { box-shadow: 0 0 0 0 rgb(214 91 85 / 48%); }
+  70% { box-shadow: 0 0 0 15px rgb(214 91 85 / 0%); }
+  100% { box-shadow: 0 0 0 0 rgb(214 91 85 / 0%); }
+}
+
+.process-node-active { animation: process-ripple 2.8s ease-out infinite; }
+.process-node { border-radius: 50% !important; }
+.nav-pill { border-radius: 9999px !important; }
+
+.no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+@keyframes process-detail-in {
+  from { opacity: 0; transform: translateX(-14px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.process-active-grid { display: grid; gap: 2rem; }
+.process-detail { animation: process-detail-in 450ms 80ms cubic-bezier(.2,.8,.2,1) both; }
+
+@media (min-width: 1024px) {
+  .process-active-grid { grid-template-columns: minmax(0, 1fr) auto; align-items: end; }
+}
+
+footer a:hover { color: #d65b55; }
+
+@media (prefers-reduced-motion: reduce) {
+  .tech-marquee, .tech-marquee-reverse { animation-play-state: paused; }
+  .process-detail { animation: none; }
+  .process-node-active { animation: none; }
+}
